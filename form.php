@@ -8,7 +8,15 @@
 		<script type="text/javascript" src="validate.js"></script>  
 		
 		<script type="text/javascript">
+			jQuery.validator.addMethod('phoneUS', function(phone_number, element) {
+				phone_number = phone_number.replace(/\s+/g, ''); 
+				return this.optional(element) || phone_number.length > 9 &&
+						phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+			}, 'Please enter a valid phone number.');
 
+			$(document).ready(function(){
+				$("#form").validate();
+			});
 		</script>
 
 		<style type="text/css">
@@ -30,16 +38,16 @@
 			<fieldset>
 			
 				<label for="name">Name: <em>*</em></label>
-				<input type="text" name="name" id="name">
+				<input type="text" name="name" id="name" class="required">
 				
 				<label for="phone">Phone (000-000-0000): <em>*</em></label>
-				<input type="text" name="phone" id="phone">
+				<input type="text" name="phone" id="phone" class="required phoneUS">
 				
 				<label for="fax">Fax (000-000-0000):</label>
 				<input type="text" name="fax" id="fax">
 				
 				<label for="email">Email: <em>*</em></label>
-				<input type="text" name="email" id="email">
+				<input type="text" name="email" id="email" class="required email">
 				
 				<label for="comments">Comments:</label>
 				<textarea name="comments" id="comments"></textarea>
