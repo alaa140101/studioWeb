@@ -3,8 +3,8 @@
 // server info
 $server = 'localhost';
 $user = 'root';
-$pass = 'root';
-$db = 'records2';
+$pass = '';
+$db = 'records';
 
 // connect to the database
 $mysqli = new mysqli($server, $user, $pass, $db);

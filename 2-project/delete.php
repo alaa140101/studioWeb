@@ -8,9 +8,8 @@
 	{
 		// get the 'id' variable from the URL
 		$id = $_GET['id'];
-		
 		// delete record from database
-		if ($stmt = $mysqli->prepare("DELETE FROM players WHERE id = ? LIMIT 1"))
+		if ($stmt = $mysqli->prepare("DELETE FROM users WHERE id = ? LIMIT 1"))
 		{
 			$stmt->bind_param("i",$id);	
 			$stmt->execute();
